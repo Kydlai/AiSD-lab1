@@ -3,11 +3,11 @@
 #include <set>
 #include <string>
 
-#include <main.h>
+#include "main.h"
 
 using namespace std;
 
-set <char> data;
+set <char> data_set;
 
 void input_manager(){
     cout << "Выберите какой пункт задания вы хотите испытать?\n";
@@ -61,11 +61,11 @@ void first_method(){
     
     char c;
     while(cin >> c){
-        if(c != '.')
-            data.insert(c);
-        else if(!(c>='a' && c<='z')){
+        if(!(c >= 'a' && c <= 'z' || c == ' ' || c == '\n' || c == '.')){
+            //cout << endl << "#" <<  c << "#" << endl;
             error_message();
-        }
+        } else if(c != '.' && c != ' ' && c != '\n')
+            data_set.insert(c);
         else
             break;
     }
