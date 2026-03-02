@@ -10,9 +10,9 @@ using namespace std;
 set <char> data_set;
 
 void input_manager(){
-    cout << "Выберите какой пункт задания вы хотите испытать?\n";
-    cout << "1: Вводится текст из строчных латинских букв, за которым следует точка.\nНапечатать первые вхождения букв в текст, сохраняя их взаимный исходный порядок.\n";
-    cout << "2: Вводятся два конечных множества X и У, состоящие из целых чисел.\nОпределить выполняется ли равенство: (AUB)\\B=A.\n";
+    cout << "\nВыберите какой пункт задания вы хотите испытать?\n";
+    cout << "1: Вводится текст из строчных латинских букв, за которым следует точка.\n   Напечатать первые вхождения букв в текст, сохраняя их взаимный исходный порядок.\n";
+    cout << "2: Вводятся два конечных множества X и У, состоящие из целых чисел.\n   Определить выполняется ли равенство: (AUB)\\B=A.\n";
     int n;
     cin >> n;
     switch (n)
@@ -31,12 +31,17 @@ void input_manager(){
 }
 
 void error_message(){
-    cout << "Во вводе допущена ошибка\nЖелаете попробовать еще раз [Y/N]?\n";
-    char c;
-    cin >> c;
-    if(c == 'Y' || c == 'y')
+    cout << "Во вводе допущена ошибка\n";
+    if(repeat_request())
         input_manager();
     return;
+}
+
+bool repeat_request(){
+    cout << "Желаете попробовать еще раз [Y/N]?\n";
+    char c;
+    cin >> c;
+    return c == 'Y' || c == 'y';
 }
 
 /*vector<int> check_int_input(string& s){
@@ -55,6 +60,13 @@ void error_message(){
     }
 }*/
 
+void printset(){
+    set<char>::iterator it;
+    for(it = data_set.begin(); it != data_set.end(); ++it)
+        cout << *it << " ";
+    cout << endl;
+}
+
 void first_method(){
     cout << "Пункт 1\n";
     cout << "Введите текст:\n";
@@ -69,6 +81,7 @@ void first_method(){
         else
             break;
     }
+    printset();
     return;
 }
 
@@ -86,9 +99,13 @@ void first_method(){
 
 
 int main() {
-    char c;
-
     input_manager();
+    while(true){
+        if(repeat_request())
+            input_manager();
+        else
+            break;
+    }
     
 
     return 0;
