@@ -163,6 +163,9 @@ bool equals_sets(set<T>& set_a, set<T>& set_b){
 
 
 int main() {
+    SetConsoleOutputCP(CP_UTF8);
+    SetConsoleCP(CP_UTF8);
+    
     input_manager();
     while(true){
         if(repeat_request())
@@ -170,7 +173,5 @@ int main() {
         else
             break;
     }
-    
-
     return 0;
 }

@@ -6,6 +6,7 @@
 #include <set>
 #include <string>
 #include <limits>
+#include <windows.h>
 
 void clear_input_buffer();
 void input_manager();
